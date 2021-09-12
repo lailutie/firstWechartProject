@@ -1,0 +1,55 @@
+.index_swiper {
+    swiper {
+        height: 340rpx;
+        width: 750rpx;
+        image {
+            width: 100%;
+        }
+    }
+}
+
+.index_cate {
+    display: flex;
+    navigator {
+        flex: 1;
+        padding: 20rpx;
+        image {
+            width: 100%;
+        }
+    }
+}
+
+.index_floor {
+    .index_floor_item {
+        .item_title {
+            image {
+                padding: 10rpx;
+            }
+        }
+        .item_list {
+            overflow: hidden;
+            navigator {
+                float: left;
+                width: 33%;
+                // 后四个超链接
+                &:nth-last-child(-n+4) {
+                    // 原图高度是232 * 386
+                    // 比例： 232 / 386 = 33.33vw / height
+                    // height: 33.3vw * 386 / 232 / 2 ;
+                    height: calc(33vw * 386 / 232 / 2); 
+                    border-left: 2rpx solid #fff;
+                }
+                &:nth-last-child(2) {
+                    border-bottom: 2rpx solid #fff;
+                }
+                &:nth-last-child(3) {
+                    border-bottom: 2px solid #fff;
+                }
+                image {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

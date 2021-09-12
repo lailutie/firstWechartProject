@@ -1,1 +1,48 @@
-/* pages/category/index.wxss */
+page {
+  height: 100%;
+}
+.category {
+  height: 100%;
+}
+.category .goods {
+  height: calc(100vh - 80rpx);
+  display: flex;
+}
+.category .goods .goods_left {
+  flex: 2;
+}
+.category .goods .goods_left .goods_left_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+  font-size: 30rpx;
+}
+.category .goods .goods_left .active {
+  color: var(--themColor);
+  border-left: 5rpx solid currentColor;
+}
+.category .goods .goods_right {
+  flex: 5;
+}
+.category .goods .goods_right .goods_right_content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.category .goods .goods_right .goods_right_content .goods_right_title {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.category .goods .goods_right .goods_right_content .goods_right_info {
+  width: 32%;
+}
+.category .goods .goods_right .goods_right_content .goods_right_info navigator {
+  width: 80%;
+  text-align: center;
+}
+.category .goods .goods_right .goods_right_content .goods_right_info navigator image {
+  width: 100%;
+}
