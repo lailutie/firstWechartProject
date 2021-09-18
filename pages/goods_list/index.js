@@ -69,16 +69,51 @@
     getGoodsList(){
       request({url:"/goods/search",data:this.QueryParams}).then(
         res => {
-          console.log(res)
-          // const total = res.data.message.total
+          // console.log(res)
+          const total = res.data.message.total
           // 计算总页数
-          // this.totalPages = Math.ceil(total/this.QueryParams.pagesize)
+          this.totalPages = Math.ceil(total / this.QueryParams.pagesize)
+          // console.log(this.totalPages)
+          // console.log(total)
           this.setData({
           // 拼接了数组
-            goodsList: res.data.message.goods
+            goodsList: [...this.data.goodsList, ...res.data.message.goods]  
           })
         })
-        
+        wx.stopPullDownRefresh()
     },
+    // 页面触底，加载更多
+    onReachBottom() {
+      // console.log("页面触底");
+      if(this.QueryParams.pagenum >= this.totalPages) {
+        // console.log("没有下一页数据了")
+        wx.showToast({
+          title: '到底了',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: false,
+        });
+      }else {
+        // console.log("还有")
+        this.QueryParams.pagenum++
+        this.getGoodsList()
+      }
+    },
+    // 监听用户下拉动作
+    onPullDownRefresh() {
+      // console.log(123)
+      this.setData({
+        goodsList: []
+      })
+      this.QueryParams.pagenum = 1
+      this.getGoodsList()
+
+    },
+
+    //切换
+    // handleTabsItemChange() {
+
+    // }
   
   })
